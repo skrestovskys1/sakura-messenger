@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAKURA</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <!-- Sakura Petals -->
+    <div class="sakura-container">
+        <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+    </div>
+
+    <!-- Auth -->
+    <div id="auth-page" class="auth-container">
+        <div class="auth-box" id="login-form">
+            <h2>🌸 Вход</h2>
+            <div class="error" id="login-error"></div>
+            <input type="text" id="login-username" placeholder="Имя пользователя">
+            <input type="password" id="login-password" placeholder="Пароль">
+            <button onclick="login()">Войти</button>
+            <p>Нет аккаунта? <a onclick="showRegister()">Регистрация</a></p>
+        </div>
+        <div class="auth-box" id="register-form" style="display:none">
+            <h2>🌸 Регистрация</h2>
+            <div class="error" id="register-error"></div>
+            <input type="text" id="reg-username" placeholder="Имя пользователя">
+            <input type="email" id="reg-email" placeholder="Email">
+            <input type="password" id="reg-password" placeholder="Пароль">
+            <button onclick="register()">Зарегистрироваться</button>
+            <p>Есть аккаунт? <a onclick="showLogin()">Войти</a></p>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="app-page" class="container" style="display:none">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="user-info" onclick="showSettingsModal()">
+                    <div class="mini-avatar" id="header-avatar">?</div>
+                    <span id="header-username">Чаты</span>
+                </div>
+                <button class="menu-btn" onclick="showCreateGroup()" title="Создать группу">+</button>
+            </div>
+            <div class="tabs">
+                <div class="tab active" data-tab="users" onclick="switchTab('users')">Пользователи</div>
+                <div class="tab" data-tab="groups" onclick="switchTab('groups')">Группы</div>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Поиск..." id="search-input" oninput="filterChats()">
+            </div>
+            <div class="chat-list" id="chat-list"></div>
+        </div>
+        <div class="chat-area" id="chat-area">
+            <div class="empty-state">
+                <div class="japan-decor">🌸</div>
+                <h3>Выберите чат</h3>
+                <p>Выберите пользователя или группу для начала общения</p>
+                <div class="japan-text">桜メッセンジャー</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Group Modal -->
+    <div class="modal" id="create-group-modal">
+        <div class="modal-content">
+            <h3>Создать группу</h3>
+            <input type="text" id="group-name" placeholder="Название группы">
+            <input type="text" id="group-desc" placeholder="Описание (необязательно)">
+            <div class="btn-row">
+                <button class="btn-secondary" onclick="hideModal()">Отмена</button>
+                <button class="btn-primary" onclick="createGroup()">Создать</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settings-modal">
+        <div class="modal-content settings-content">
+            <div class="modal-header">
+                <h3>Настройки профиля</h3>
+                <button class="exit-btn" onclick="window.location.href='https://freedownload.moy.su/index.html'">ВЫЙТИ</button>
+            </div>
+            <div class="avatar-upload">
+                <div class="avatar-preview" id="avatar-preview">
+                    <span id="avatar-initial">?</span>
+                    <img id="avatar-img" src="" style="display:none">
+                </div>
+                <input type="file" id="avatar-input" accept="image/*" onchange="uploadAvatar()">
+                <button class="btn-secondary" onclick="document.getElementById('avatar-input').click()">Изменить фото</button>
+            </div>
+            <div class="error" id="settings-error"></div>
+            <input type="text" id="settings-username" placeholder="Имя пользователя">
+            <input type="email" id="settings-email" placeholder="Email">
+            <hr>
+            <h4>Сменить пароль</h4>
+            <input type="password" id="old-password" placeholder="Текущий пароль">
+            <input type="password" id="new-password" placeholder="Новый пароль">
+            <div class="btn-row">
+                <button class="btn-secondary" onclick="hideSettingsModal()">Закрыть</button>
+                <button class="btn-primary" onclick="saveSettings()">Сохранить</button>
+            </div>
+            <button class="btn-logout" onclick="logout()">Выйти из аккаунта</button>
+        </div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
