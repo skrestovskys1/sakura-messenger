@@ -222,3 +222,10 @@ body::before {
 .petal:nth-child(28) { left: 78%; animation-duration: 8s, 4s; animation-delay: 5.3s; width: 12px; height: 12px; }
 .petal:nth-child(29) { left: 88%; animation-duration: 11s, 2.5s; animation-delay: 6.8s; width: 14px; height: 14px; }
 .petal:nth-child(30) { left: 98%; animation-duration: 9s, 3s; animation-delay: 5.7s; width: 11px; height: 11px; }
+
+/* User ID Display */
+.user-id-display { display: flex; align-items: center; gap: 10px; background: #fff; padding: 12px; border-radius: 8px; margin-bottom: 12px; }
+.user-id-display span:first-child { color: #666; font-size: 14px; }
+.user-id-value { font-family: monospace; font-size: 16px; font-weight: 600; color: #000; }
+.copy-btn { background: none; border: none; cursor: pointer; font-size: 16px; padding: 4px; }
+.copy-btn:hover { opacity: 0.7; }

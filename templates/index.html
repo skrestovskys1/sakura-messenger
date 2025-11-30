@@ -96,6 +96,11 @@
                 <input type="file" id="avatar-input" accept="image/*" onchange="uploadAvatar()">
                 <button class="btn-secondary" onclick="document.getElementById('avatar-input').click()">Изменить фото</button>
             </div>
+            <div class="user-id-display">
+                <span>ID:</span>
+                <span id="settings-user-id" class="user-id-value">-</span>
+                <button class="copy-btn" onclick="copyUserId()" title="Копировать">📋</button>
+            </div>
             <div class="error" id="settings-error"></div>
             <input type="text" id="settings-username" placeholder="Имя пользователя">
             <input type="email" id="settings-email" placeholder="Email">

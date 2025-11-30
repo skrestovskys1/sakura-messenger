@@ -327,11 +327,11 @@ function showSettingsModal() {
     document.getElementById('settings-modal').classList.add('active');
     document.getElementById('settings-username').value = currentUser.username;
     document.getElementById('settings-email').value = currentUser.email;
+    document.getElementById('settings-user-id').textContent = currentUser.user_id || '-';
     document.getElementById('old-password').value = '';
     document.getElementById('new-password').value = '';
     document.getElementById('settings-error').textContent = '';
     
-    const preview = document.getElementById('avatar-preview');
     if (currentUser.avatar) {
         document.getElementById('avatar-initial').style.display = 'none';
         document.getElementById('avatar-img').src = currentUser.avatar;
@@ -340,6 +340,14 @@ function showSettingsModal() {
         document.getElementById('avatar-initial').textContent = currentUser.username[0].toUpperCase();
         document.getElementById('avatar-initial').style.display = 'flex';
         document.getElementById('avatar-img').style.display = 'none';
+    }
+}
+
+function copyUserId() {
+    const userId = currentUser.user_id;
+    if (userId) {
+        navigator.clipboard.writeText(userId);
+        alert('ID скопирован!');
     }
 }
 

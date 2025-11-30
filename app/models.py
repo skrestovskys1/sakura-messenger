@@ -10,10 +10,16 @@ group_members = Table(
     Column('group_id', Integer, ForeignKey('groups.id'))
 )
 
+import random
+
+def generate_user_id():
+    return random.randint(100000000, 999999999)
+
 class User(Base):
     __tablename__ = "users"
     
     id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(String(20), unique=True, index=True, default=lambda: str(generate_user_id()))
     username = Column(String(50), unique=True, index=True)
     email = Column(String(100), unique=True, index=True)
     hashed_password = Column(String(100))
